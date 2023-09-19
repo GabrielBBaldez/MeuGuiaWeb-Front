@@ -1,0 +1,48 @@
+.card{
+    width:300px;
+    height: 300px;
+    background-color: #efefef;
+    color: gray;
+    border-radius: 8px;
+    box-shadow: 5px 5px 10px #22222270;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card h3{
+    color: black;
+}
+
+.card p{
+    color: #555;
+}
+
+.card_footer{
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.botao{
+    width: 40px;
+    height: 40px;
+    border: 0;
+    background-color: #333;
+    color: white;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor:pointer;
+    border-radius: 10px;
+}
+
+.botao:hover{
+    background-color: #ffbb33;
+    transition: all 0.5s;
+}
