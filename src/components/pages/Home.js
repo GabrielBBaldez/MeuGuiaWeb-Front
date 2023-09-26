@@ -13,6 +13,19 @@ register();
 
 function Home() {
 
+    const [repositories, setRepositories] = useState([])
+
+    useEffect(()=>{
+        const buscarRepositorios = async() => {
+            const response = await fetch('http://localhost:8080/roteiro')
+
+            const data = await response.json()
+            setRepositories(data)
+        }
+        buscarRepositorios()
+    }, [])
+
+
     const [slidePerView, setSlidePerView] = useState(2)
 
     useEffect(() => {
@@ -33,24 +46,18 @@ function Home() {
         }
     }, [])
 
-    const data=[
-        {id:'1', image: 'https://i.scdn.co/image/ab67706c0000da84fa3aaa0d963e2bf8ad57b74a'},
-        {id:'2', image: 'https://i.redd.it/ekaeyhvxoyp61.jpg'},
-        {id:'3', image: 'https://i.imgur.com/qW7QMXB.jpg'},
-        {id:'4', image: 'https://i.pinimg.com/originals/c7/1b/77/c71b7763ff93ef9b1a8ee1ebde0db025.jpg'},
-    ]
-
-
         return (
             <div className='container'>
                 <Swiper slidesPerView={slidePerView} pagination={{clickable:true}} navigation>
-                    {data.map((item) =>(
+                    {repositories.map((item) =>(
                         <SwiperSlide key={item.id}>
+                            <div className={styles.carrossel}>
                             <img
-                                src={item.image}
+                                src={item.urlImagem}
                                 alt="Slider"
                                 className={styles.slide_item}
                             />
+                            </div>
                         </SwiperSlide>
 
                     ))}
