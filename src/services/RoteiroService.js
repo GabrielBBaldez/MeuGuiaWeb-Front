@@ -8,6 +8,10 @@ class RoteiroService{
         return axios.get(ROTEIRO_API_BASE_URL);
     }
 
+    getRoteiroById(id){
+        return axios.get(ROTEIRO_API_BASE_URL + '/' + id);
+    }
+
     createRoteiro(roteiro){
         return axios.post(ROTEIRO_API_BASE_URL, roteiro);
     }
