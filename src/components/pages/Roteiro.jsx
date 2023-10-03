@@ -36,6 +36,7 @@ function Roteiro() {
                                             name={repo.nomeRoteiro} 
                                             description={repo.descricao}
                                             html_url={repo.urlImagem}
+                                            identificador={repo.id}
                                         />
                                     ))
                                 }

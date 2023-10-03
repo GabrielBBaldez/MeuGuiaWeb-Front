@@ -11,6 +11,10 @@ class RoteiroService{
     createRoteiro(roteiro){
         return axios.post(ROTEIRO_API_BASE_URL, roteiro);
     }
+
+    deleteRoteiro(identificador){
+        return axios.delete(ROTEIRO_API_BASE_URL + '/' + identificador);
+    }
 }
 
 export default new RoteiroService()
