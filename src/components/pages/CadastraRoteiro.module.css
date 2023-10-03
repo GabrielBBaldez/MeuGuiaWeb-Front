@@ -2,6 +2,24 @@
     position: relative;
     width: 600px;
     margin: 0 auto;
-    padding-top: 50px;
+    padding-top: 30px;
+}
+
+.estiloBotao{
+    padding-top: 20px;
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-bottom: 10px;
+}
+
+.botoes{
+    width:100%;
+    display: flex;
+    align-items: center;
+    padding-right: 10px;
+    padding-bottom: 10px; 
+    justify-content: right;
 }
 

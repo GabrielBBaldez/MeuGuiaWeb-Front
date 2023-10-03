@@ -94,6 +94,17 @@ class MeuComponente extends Component {
     });
   };
 
+  excluirTodosDias = (e) => {
+    e.preventDefault();
+    this.setState({
+      meuObjeto: {
+        ...this.state.meuObjeto,
+        listaDeDias: [], // Define uma lista vazia para excluir todos os dias
+      },
+      objetoEmEdicaoIndex: -1, // Limpa o índice de edição
+    });
+  };
+
   changeHandler = (e) => {
     const { name, value } = e.target;
     this.setState((prevState) => ({
@@ -105,7 +116,7 @@ class MeuComponente extends Component {
   };
 
 
-  enviarObjetoParaAPI = (e) => {
+  enviarObjetoParaAPI = () => {
     let { meuObjeto } = this.state;
     meuObjeto = JSON.stringify(meuObjeto);
    console.log(meuObjeto);
@@ -129,7 +140,8 @@ class MeuComponente extends Component {
 
     return (
       <div className={styles.container}>
-        <h2 className='text-center'>Cadastre um roteiro</h2>
+        <div className="border border-dark, col-12" style={{boxShadow:'0px 4px 6px rgba(0, 0, 0, 0.1)'}}>
+        <h2 className='text-center' style={{paddingTop:'10px'}}>Cadastre um roteiro</h2>
         <form className='row g-3'>
           <div className='col-md-6'>
             <label className='form-label'>Partida:</label>
@@ -139,6 +151,7 @@ class MeuComponente extends Component {
               onChange={this.changeHandler}
               className='form-control'
               name='dataPartida'
+              required
             />
           </div>
 
@@ -150,10 +163,11 @@ class MeuComponente extends Component {
               onChange={this.changeHandler}
               className='form-control'
               name='dataChegada'
+              required
             />
           </div>
 
-          <div className='col-12'>
+          <div className='col-12' style={{paddingTop:'15px'}}>
             <label className='form-label'>Nome do roteiro:</label>
             <input
               type='text'
@@ -161,10 +175,11 @@ class MeuComponente extends Component {
               onChange={this.changeHandler}
               className='form-control'
               name='nomeRoteiro'
+              required
             />
           </div>
 
-          <div className='col-12'>
+          <div className='col-12' style={{paddingTop:'15px'}}>
             <label className='form-label'>Principais atrações:</label>
             <textarea
               className='form-control'
@@ -172,10 +187,11 @@ class MeuComponente extends Component {
               onChange={this.changeHandler}
               aria-label='With textarea'
               name='atracoes'
+              required
             ></textarea>
           </div>
 
-          <div className='col-12'>
+          <div className='col-12' style={{paddingTop:'15px'}}>
             <label className='form-label'>Descrição:</label>
             <textarea
               className='form-control'
@@ -183,10 +199,11 @@ class MeuComponente extends Component {
               onChange={this.changeHandler}
               aria-label='With textarea'
               name='descricao'
+              required
             ></textarea>
           </div>
 
-          <div className='col-12'>
+          <div className='col-12' style={{paddingBottom: '20px', paddingTop:'15px'}}>
             <label className='form-label'>Insira uma imagem do local:</label>
             <input
               type='text'
@@ -194,10 +211,11 @@ class MeuComponente extends Component {
               onChange={this.changeHandler}
               className='form-control'
               name='urlImagem'
+              required
             />
           </div>
 
-          <div className='col-md-8'>
+          <div className='col-md-12'>
             <label className='form-label'>Locais que serão visitados:</label>
             <input
               type='text'
@@ -208,7 +226,7 @@ class MeuComponente extends Component {
             />
           </div>
 
-          <div className='col-md-10'>
+          <div className='col-md-12'>
             <label className='form-label'>Descrição dos locais:</label>
             <textarea
               className='form-control'
@@ -219,31 +237,43 @@ class MeuComponente extends Component {
             ></textarea>
           </div>
 
-          <div>
-            <button onClick={this.adicionarDia}>
-              {objetoEmEdicaoIndex !== -1 ? 'Editar Dia' : 'Adicionar Dia'}
-            </button>
+          <div className={styles.estiloBotao}>
+            <div className={styles.adicionaDia}>
+                <button className="btn btn-primary" onClick={this.adicionarDia}>
+                  {objetoEmEdicaoIndex !== -1 ? 'Editar Dia' : 'Adicionar Dia'}
+                </button>
+            </div>
+            <div>
+                <button className="btn btn-warning" onClick={this.excluirTodosDias}><i className="fa-solid fa-eraser"></i> Limpar Campos</button>
+            </div>
+            <div>
+                <button className="btn btn-success" onClick={this.enviarObjetoParaAPI}><i className="fa-solid fa-check"></i> Enviar para API</button>
+              </div>
+          </div>
+          </form>
           </div>
 
-          <div>
-            <button onClick={this.enviarObjetoParaAPI}>
-              Enviar para API
-            </button>
-          </div>
+          <div className='col-md-12'>
+            <h2 className='text-center' style={{paddingTop:'20px'}}>Lista de Dias:</h2>
 
-          <div>
-            <h2>Lista de Dias:</h2>
-            <ul>
               {meuObjeto.listaDeDias.map((dia, index) => (
-                <li key={dia.sequencial_dia}>
-                  {`Dia ${dia.sequencial_dia}: Local: ${dia.local_dia}, Descrição: ${dia.atividade}`}
-                  <button onClick={() => this.editarDia(index)}>Editar</button>
-                  <button onClick={() => this.excluirDia(index)}>Excluir</button>
-                </li>
+                  <div className={styles.card} key={dia.sequencial_dia} style={{paddingBottom:'10px'}}>
+                    <div className='border' style={{width: '570px', paddingLeft: '10px', boxShadow:'0px 4px 6px rgba(0, 0, 0, 0.1)',  overflow: 'hidden', textOverflow: 'ellipsis', paddingRight:'10px'}}>
+                      <h5>{`Dia ${dia.sequencial_dia}:`}</h5> 
+                      <h6>{`Local: ${dia.local_dia}`}</h6>
+                      <p>{`Descrição: ${dia.atividade}`}</p>  
+                      <div className={styles.botoes}>    
+                        <button className='btn btn-secondary' onClick={() => this.editarDia(index)}><i className="fa-solid fa-pen-to-square"></i> Editar</button>
+                        <div style={{paddingLeft:'10px'}}>
+                        <button className='btn btn-danger' onClick={() => this.excluirDia(index)}><i className="fa-solid fa-trash"></i> Excluir</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
               ))}
-            </ul>
+
           </div>
-        </form>
       </div>
     );
   }

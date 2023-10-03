@@ -34,7 +34,7 @@ function Roteiro() {
                                         <Card 
                                             key={repo.id} 
                                             name={repo.nomeRoteiro} 
-                                            description={repo.descricao.substring(0, 50)}
+                                            description={repo.descricao}
                                             html_url={repo.urlImagem}
                                         />
                                     ))
