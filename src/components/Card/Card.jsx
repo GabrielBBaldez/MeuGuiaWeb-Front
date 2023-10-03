@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import styles from './Card.module.css'
+import styles from '../module/Card.module.css'
 import {BsArrowRight} from 'react-icons/bs'
 import RoteiroService from '../../services/RoteiroService'
 

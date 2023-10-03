@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import styles from './CadastraRoteiro.module.css';
+import styles from '../module/CadastraRoteiro.module.css';
 
 class MeuComponente extends Component {
   constructor() {

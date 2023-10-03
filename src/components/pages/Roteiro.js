@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 
 
-import styles from './Roteiro.module.css';
+import styles from '../module/Roteiro.module.css';
 
 function Roteiro() {
 

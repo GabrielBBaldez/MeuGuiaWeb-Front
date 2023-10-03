@@ -7,7 +7,7 @@ import 'swiper/css/scrollbar';
 
 import { useState, useEffect } from 'react';
 
-import styles from './Home.module.css'
+import styles from '../module/Home.module.css'
 
 register();
 
