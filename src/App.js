@@ -6,6 +6,7 @@ import Home from './components/pages/Home'
 import CadastraRoteiro from './components/pages/CadastraRoteiro'
 import Roteiro from './components/pages/Roteiro';
 import ViewRoteiro from './components/pages/ViewRoteiro';
+import UpdateCadastro from './components/pages/UpdateCadastro';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
                   <Route exact path="/" element= {< Home />}/>
                   <Route path="/roteiros" element= {< Roteiro />}/>
                   <Route path="/cadastro" element= {< CadastraRoteiro />}/>
+                  <Route path="/cadastro/:id" element= {< UpdateCadastro />}/>
                   <Route path="/roteiros/:id" element= {< ViewRoteiro />}/>
             </Routes>    
     </Router>
