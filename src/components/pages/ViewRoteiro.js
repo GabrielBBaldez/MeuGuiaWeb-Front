@@ -22,9 +22,11 @@ function ViewRoteiro() {
             const sequenciaisDia = data.programacaoList.map(item => item.sequencialDia);
         }
         buscarRepositorios()
-    }, [])
+    }, [id])
 
-    
+    const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
+    const formattedDateChegada = new Date(repositories.dataChegada).toLocaleDateString(undefined, options);
+    const formattedDatePartida = new Date(repositories.dataPartida).toLocaleDateString(undefined, options);
 
         return (
             <div className={styles.container}>
@@ -34,25 +36,27 @@ function ViewRoteiro() {
                     </div>
 
                     <div className='col-12' style={{display:'flex', justifyContent:'center'}}>
-                        <img src={repositories.urlImagem}></img>
+                        <img src={repositories.urlImagem} alt='imagemRoteiro'></img>
                     </div>
                     <div className='col-12'>
                         <h3 className={styles.atracoes}>{repositories.atracoes}</h3>
                     </div>
                     <div className='col-12' style={{textAlign:'center', color:'red'}}>
-                        <h4>{repositories.dataPartida} a {repositories.dataChegada}</h4>
+                        <h4>{formattedDatePartida} a {formattedDateChegada}</h4>
                     </div>
                     <div className="col-12">
-                        <p className={styles.descricao}><b>Sobre o destino:</b> {repositories.descricao}</p>
+                        <p className={styles.descricao}><b>SOBRE O DESTINO:</b> {repositories.descricao}</p>
                     </div>
 
                     <div className="col-12">
-                        <h5>Programação dia a dia:</h5>
+                        <h5>PROGRAMAÇÃO DIA A DIA:</h5>
 
                             {repositories && repositories.programacaoList ? (
                             repositories.programacaoList.map(item => (
-                                <h5 key={item.id}><b>Dia {item.sequencialDia} - {item.localDia}:</b> {item.atividade} </h5>
-                
+                                <div className='border' style={{padding:'10px',  marginBottom:'10px', wordWrap:'break-word', boxShadow:'0px 4px 6px rgba(0, 0, 0, 0.1)'}}>
+                                    <h5 key={item.id}><b>Dia {item.sequencialDia} - {item.localDia}:</b> </h5>
+                                    <p className={styles.atividade}>{item.atividade}</p> 
+                                </div>
                             ))
                             ) : (
                             <li>Nenhum dado disponível.</li>

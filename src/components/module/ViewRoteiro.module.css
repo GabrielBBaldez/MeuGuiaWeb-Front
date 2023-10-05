@@ -6,7 +6,7 @@
 
 .container{
     position: relative;
-    width: 700px;
+    width: 900px;
     margin: 0 auto;
 }
 
@@ -16,22 +16,29 @@
 }
 
 img {
-    max-width: 800px; /* Para evitar que a imagem seja maior que a tela */
+    max-width: 900px; /* Para evitar que a imagem seja maior que a tela */
     max-height: 400px;
   }
 
 .atracoes{
     padding-top: 15px;
     text-align: center;
+    font-size: 18px;
 }
 
 .descricao{
-    font-size: 22px;
+    font-size: 18px;
     padding-top: 30px;
+    padding-bottom: 30px;
+    text-align: justify;
 }
 
 .datas{
     padding-top: 10px;
     text-align: center;
     color: red;
+}
+
+.atividade{
+    text-align: justify;
 }

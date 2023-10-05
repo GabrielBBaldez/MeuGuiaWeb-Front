@@ -1,6 +1,5 @@
 import styles from '../module/UpdateCadastro.module.css'
 import axios from 'axios';
-import {useParams} from 'react-router-dom'
 import {useState, useEffect} from 'react'
 
 function UpdateCadastro(){
