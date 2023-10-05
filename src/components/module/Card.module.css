@@ -57,6 +57,7 @@
     justify-content: center;
     cursor:pointer;
     border-radius: 10px;
+    margin-left: auto;
 }
 
 .botao:hover{
