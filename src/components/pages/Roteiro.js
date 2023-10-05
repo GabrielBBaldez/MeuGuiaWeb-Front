@@ -24,7 +24,7 @@ function Roteiro() {
         return (
             <section className={styles.roteiro}>
 
-                <h2 className='text-center'>Roteiros</h2>
+                <h1 className='text-center' style={{color:'black'}} >Roteiros</h1>
 
                     {
                         repositories.length > 0 ? (

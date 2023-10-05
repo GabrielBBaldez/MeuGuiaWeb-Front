@@ -1,0 +1,22 @@
+.nomeRoteiro{
+    color:black;
+    padding-top: 40px;
+    text-align: center;
+}
+
+.container{
+    position: relative;
+    width: 600px;
+    margin: 0 auto;
+    padding-top: 30px;
+}
+
+.submit{
+    padding-top: 50px;
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 10px;
+    padding-right: 10px;
+}
