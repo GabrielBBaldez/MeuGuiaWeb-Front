@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { useState } from 'react';
-import { useEffect } from 'react';
+import { useEffect, useRef  } from 'react';
 import styles from '../module/ParticiparViagem.module.css';
 
 function ParticiparViagem(){
@@ -27,15 +27,15 @@ function ParticiparViagem(){
 
     return(
         <div className={styles.container}>
-                <div>
-                    <h1 className={styles.nomeRoteiro}>{repositories.nomeRoteiro}</h1>
-                </div>
+            <div>
+                <h1 className={styles.nomeRoteiro}>{repositories.nomeRoteiro}</h1>
+            </div>
 
-                <div className='col-12' style={{textAlign:'center', color:'red', paddingTop:'20px', paddingBottom:'20px'}}>
-                    <h4>{formattedDatePartida} a {formattedDateChegada}</h4>
-                </div>
+            <div className='col-12' style={{textAlign:'center', color:'red', paddingTop:'20px', paddingBottom:'20px'}}>
+                <h4>{formattedDatePartida} a {formattedDateChegada}</h4>
+            </div>
 
-                <form className='row g-3 border' style={{paddingTop:'20px'}}>
+            <form className='row g-3 border' style={{paddingTop:'20px'}}>
                 <div className='col-md-6'>
                     <label className='form-label'>Nome:</label>
                     <input
@@ -43,75 +43,74 @@ function ParticiparViagem(){
                         className='form-control'
                         name='name'
                         required
-                        />
-                    </div>
+                    />
+                </div>
 
-                    <div className='col-md-6'>
-                        <label className='form-label'>Profissão:</label>
-                        <input
+                <div className='col-md-6'>
+                    <label className='form-label'>Profissão:</label>
+                    <input
                         type='text'
                         className='form-control'
                         name='profissao'
                         required
-                        />
-                    </div>
+                    />
+                </div>
 
-                    <div className='col-6' style={{paddingTop:'15px'}}>
-                        <label className='form-label'>Telefone:</label>
-                        <input
+                <div className='col-6' style={{paddingTop:'15px'}}>
+                    <label className='form-label'>Telefone:</label>
+                    <input
                         type='text'
                         placeholder="(XX) XXXX-XXXX"
                         className='form-control'
                         name='telefone'
+                        pattern="\(\d{2}\) \d{5}-\d{4}"
                         required
-                        />
-                    </div>
+                    />
+                </div>
 
-                    <div className='col-6' style={{paddingTop:'15px'}}>
-                        <label className='form-label'>Email:</label>
-                        <input
+                <div className='col-6' style={{paddingTop:'15px'}}>
+                    <label className='form-label'>Email:</label>
+                    <input
                         type='email'
                         className='form-control'
                         name='email'
                         required
-                        />
-                    </div>
+                    />
+                </div>
 
-                    <div className='col-6' style={{paddingTop:'15px'}}>
-                        <label className='form-label'>Cidade:</label>
-                        <input
+                <div className='col-6' style={{paddingTop:'15px'}}>
+                    <label className='form-label'>Cidade:</label>
+                    <input
                         type='text'
                         className='form-control'
                         name='cidade'
                         required
-                        />
-                    </div>
+                    />
+                </div>
 
-                    <div className='col-6' style={{paddingTop:'15px'}}>
-                        <label className='form-label'>Estado:</label>
-                        <input
+                <div className='col-6' style={{paddingTop:'15px'}}>
+                    <label className='form-label'>Estado:</label>
+                    <input
                         type='text'
                         className='form-control'
                         name='estado'
                         required
-                        />
-                    </div>
+                    />
+                </div>
 
-
-
-                    <div className='col-12' style={{paddingTop:'15px'}}>
-                        <label className='form-label'>Observações:</label>
-                        <textarea
+                <div className='col-12' style={{paddingTop:'15px'}}>
+                    <label className='form-label'>Observações:</label>
+                    <textarea
                         className='form-control'
                         aria-label='With textarea'
                         name='observacoes'
-                        ></textarea>
-                    </div>
+                    ></textarea>
+                </div>
 
-                    <div className={styles.submit}>
-                        <button className="btn btn-success"><i className="fa-solid fa-check"></i> Enviar para API</button>
-                    </div>
-                </form>
+                <div className={styles.submit}>
+                    <button className="btn btn-success"><i className="fa-solid fa-check"></i> Enviar para API</button>
+                </div>
+            </form>
 
         </div>
     )
