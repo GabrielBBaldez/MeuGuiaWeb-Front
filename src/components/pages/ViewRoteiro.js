@@ -20,7 +20,7 @@ function ViewRoteiro() {
             const data = await response.json()
             setRepositories(data)
 
-            const sequenciaisDia = data.programacaoList.map(item => item.sequencialDia);
+            //const sequenciaisDia = data.programacaoList.map(item => item.sequencialDia);
         }
         buscarRepositorios()
     }, [id])

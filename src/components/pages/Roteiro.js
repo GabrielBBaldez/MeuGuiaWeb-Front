@@ -42,7 +42,7 @@ function Roteiro() {
                                 }
                             </section>
                         ) : (
-                            <p>Carregando repositórios</p>
+                            <p></p>
                         )
                     }
 

@@ -240,7 +240,7 @@ class MeuComponente extends Component {
           <div className={styles.estiloBotao}>
             <div className={styles.adicionaDia}>
                 <button className="btn btn-primary" onClick={this.adicionarDia}>
-                <i class="fa-solid fa-plus"></i>{objetoEmEdicaoIndex !== -1 ? 'Editar Dia' : 'Adicionar Dia'}
+                <i className="fa-solid fa-plus"></i>{objetoEmEdicaoIndex !== -1 ? ' Editar Dia' : ' Adicionar Dia'}
                 </button>
             </div>
             <div>
