@@ -1,6 +1,16 @@
 .container{
     position: relative;
-    width: 600px;
+    width: 900px;
     margin: 0 auto;
     padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.botao{
+    padding-top: 10px;
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-bottom: 5px;
 }
