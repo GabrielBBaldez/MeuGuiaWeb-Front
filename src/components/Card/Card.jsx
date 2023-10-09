@@ -32,8 +32,8 @@ function Card({name, description, html_url, identificador}){
             <p>{description}</p>
 
             <div className={styles.card_footer}>
-            <button className='btn btn-secondary' onClick={() => handleEdicao(identificador)} style={{marginRight:'10px'}}><i className="fa-solid fa-pen-to-square"></i></button>
-            <button className='btn btn-danger' id="excluirButton" data-id={identificador} onClick={() => deleteRoteiro(identificador)}><i className="fa-solid fa-trash"></i></button>
+                <button className='btn btn-secondary' onClick={() => handleEdicao(identificador)} style={{marginRight:'10px'}}><i className="fa-solid fa-pen-to-square"></i></button>
+                <button className='btn btn-danger' id="excluirButton" data-id={identificador} onClick={() => deleteRoteiro(identificador)}><i className="fa-solid fa-trash"></i></button>
                 <button className={styles.botao} onClick={() => handleRedirecionar(identificador)}><BsArrowRight/></button>
             </div>
         </section>
