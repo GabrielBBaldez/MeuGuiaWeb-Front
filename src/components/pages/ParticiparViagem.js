@@ -25,6 +25,61 @@ function ParticiparViagem(){
     const formattedDateChegada = new Date(repositories.dataChegada).toLocaleDateString(undefined, options);
     const formattedDatePartida = new Date(repositories.dataPartida).toLocaleDateString(undefined, options);
 
+
+    const [cliente, setCliente] = useState({
+        nome: '',
+        profissao: '',
+        telefone: '',
+        email:'',
+        cidade: '',
+        estado: '',
+        observacoes: '',
+      });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setCliente({ ...cliente, [name]: value });
+      };
+
+      const [nomeRoteiroAdicionado, setNomeRoteiroAdicionado] = useState(false);
+
+      const handleChangeObservacao = (e) => {
+        const { name, value } = e.target;
+      
+        // Verifique se o nome do roteiro já foi adicionado
+        if (!nomeRoteiroAdicionado) {
+          // Adicione o nome do roteiro e marque como adicionado
+          const observacoesComNomeRoteiro = `${repositories.nomeRoteiro}: ${value}`;
+          setNomeRoteiroAdicionado(true);
+          setCliente({ ...cliente, [name]: observacoesComNomeRoteiro });
+        } else {
+          setCliente({ ...cliente, [name]: value });
+        }
+      };
+
+      const handleSubmit = async () => {
+
+        try {
+          const response = await fetch('http://localhost:8080/cliente', {
+            method: 'POST', // ou 'PUT' se for uma atualização
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(cliente),
+          });
+    
+          if (response.ok) {
+            console.log("Enviado")
+          } else {
+            console.log("Erro")
+          }
+        } catch (error) {
+          console.error('Erro ao enviar os dados do cliente:', error);
+        }
+      };
+
+
+
     return(
         <div className={styles.container}>
             <div>
@@ -35,13 +90,17 @@ function ParticiparViagem(){
                 <h4>{formattedDatePartida} a {formattedDateChegada}</h4>
             </div>
 
-            <form className='row g-3 border' style={{paddingTop:'20px'}}>
+            <form className='row g-3 border' style={{paddingTop:'20px'}} onSubmit={handleSubmit}>
+
+
                 <div className='col-md-6'>
                     <label className='form-label'>Nome:</label>
                     <input
                         type='text'
                         className='form-control'
-                        name='name'
+                        name='nome'
+                        value={cliente.nome}
+                        onChange={handleChange}
                         required
                     />
                 </div>
@@ -52,6 +111,8 @@ function ParticiparViagem(){
                         type='text'
                         className='form-control'
                         name='profissao'
+                        value={cliente.profissao}
+                        onChange={handleChange}
                         required
                     />
                 </div>
@@ -60,10 +121,11 @@ function ParticiparViagem(){
                     <label className='form-label'>Telefone:</label>
                     <input
                         type='text'
-                        placeholder="(XX) XXXX-XXXX"
+                        placeholder="XX XXXXXXXXX"
                         className='form-control'
                         name='telefone'
-                        pattern="\(\d{2}\) \d{5}-\d{4}"
+                        value={cliente.telefone}
+                        onChange={handleChange}
                         required
                     />
                 </div>
@@ -74,6 +136,8 @@ function ParticiparViagem(){
                         type='email'
                         className='form-control'
                         name='email'
+                        value={cliente.email}
+                        onChange={handleChange}
                         required
                     />
                 </div>
@@ -84,6 +148,8 @@ function ParticiparViagem(){
                         type='text'
                         className='form-control'
                         name='cidade'
+                        value={cliente.cidade}
+                        onChange={handleChange}
                         required
                     />
                 </div>
@@ -94,6 +160,8 @@ function ParticiparViagem(){
                         type='text'
                         className='form-control'
                         name='estado'
+                        value={cliente.estado}
+                        onChange={handleChange}
                         required
                     />
                 </div>
@@ -104,11 +172,13 @@ function ParticiparViagem(){
                         className='form-control'
                         aria-label='With textarea'
                         name='observacoes'
+                        value={cliente.observacoes}
+                        onChange={handleChangeObservacao}
                     ></textarea>
                 </div>
 
                 <div className={styles.submit}>
-                    <button className="btn btn-success"><i className="fa-solid fa-check"></i> Enviar para API</button>
+                    <button type="submit" className="btn btn-success"><i className="fa-solid fa-check"></i> Enviar para API</button>
                 </div>
             </form>
 

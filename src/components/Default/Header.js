@@ -23,7 +23,7 @@ function Header(){
                         </li>
                         <li className={styles.item}>
                         <Dropdown data-bs-theme="dark" >
-                            <Dropdown.Toggle id="dropdown-button-dark" variant="dark">
+                            <Dropdown.Toggle className={styles.botaoUsuario} id="dropdown-button-dark" variant="dark" style={{ background: 'transparent', border: 'none', fontSize:'25px'}}>
                                 Usuário
                             </Dropdown.Toggle>
                             <Dropdown.Menu style={{backgroundColor: "#333"}} >
