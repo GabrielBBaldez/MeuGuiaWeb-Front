@@ -3,6 +3,10 @@ import { useState } from 'react';
 import { useEffect, useRef  } from 'react';
 import styles from '../module/ParticiparViagem.module.css';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 function ParticiparViagem(){
     const url = window.location.href;
     const id = url.split('/').slice(-2)[0];
@@ -57,7 +61,8 @@ function ParticiparViagem(){
         }
       };
 
-      const handleSubmit = async () => {
+      const handleSubmit = async (e) => {
+        e.preventDefault();
 
         try {
           const response = await fetch('http://localhost:8080/cliente', {
@@ -70,8 +75,28 @@ function ParticiparViagem(){
     
           if (response.ok) {
             console.log("Enviado")
+            toast.success('Formulário enviado com sucesso!', {
+              position: 'top-right',
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+            });
+  
+            setTimeout(() => {
+              window.location.reload();
+            }, 1500);
+
+
           } else {
             console.log("Erro")
+            toast.error('Ocorreu um erro ao tentar enviar o formulário!', {
+              position: 'top-right', // Posição da notificação
+              autoClose: 3000,      // Duração em milissegundos
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+            });
           }
         } catch (error) {
           console.error('Erro ao enviar os dados do cliente:', error);
@@ -182,6 +207,7 @@ function ParticiparViagem(){
                 </div>
             </form>
 
+            <ToastContainer /> 
         </div>
     )
 }

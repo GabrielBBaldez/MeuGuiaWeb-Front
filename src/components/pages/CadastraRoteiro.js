@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import styles from '../module/CadastraRoteiro.module.css';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 class MeuComponente extends Component {
   constructor() {
     super();
@@ -116,7 +119,9 @@ class MeuComponente extends Component {
   };
 
 
-  enviarObjetoParaAPI = () => {
+  enviarObjetoParaAPI = (e) => {
+    e.preventDefault();
+
     let { meuObjeto } = this.state;
     meuObjeto = JSON.stringify(meuObjeto);
    console.log(meuObjeto);
@@ -129,9 +134,28 @@ class MeuComponente extends Component {
       .post('http://localhost:8080/roteiro', meuObjeto, { headers })
       .then((response) => {
         console.log('POST request bem-sucedido:', response);
+        toast.success('Roteiro cadastrado com sucesso!', {
+          position: 'top-right',
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+        });
+
+        setTimeout(() => {
+          window.location.reload();
+        }, 1500);
+
       })
       .catch((error) => {
         console.error('Erro ao enviar o POST request:', error);
+        toast.error('Ocorreu um erro ao tentar fazer o cadastro!', {
+          position: 'top-right', // Posição da notificação
+          autoClose: 3000,      // Duração em milissegundos
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+        });
       });
   };
 
@@ -274,6 +298,7 @@ class MeuComponente extends Component {
               ))}
 
           </div>
+          <ToastContainer /> 
       </div>
     );
   }

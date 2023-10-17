@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import styles from '../module/UpdateCadastro.module.css';
 import axios from 'axios';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 class UpdateCadastro extends Component {
   constructor(props) {
     super(props);
@@ -88,10 +91,28 @@ class UpdateCadastro extends Component {
         .put(`http://localhost:8080/roteiro/${id}`, meuObjetoJSON, { headers })
         .then((response) => {
           console.log('PUT request bem-sucedido:', response);
-          window.history.back();
+
+          toast.success('Alteração efetuada com sucesso!', {
+            position: 'top-right',
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+          });
+
+          setTimeout(() => {
+            window.history.back();
+          }, 1500);
         })
         .catch((error) => {
           console.error('Erro ao enviar o PUT request:', error);
+          toast.error('Ocorreu um erro ao tentar fazer a alteração!', {
+            position: 'top-right', // Posição da notificação
+            autoClose: 3000,      // Duração em milissegundos
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+          });
         });
     };
 
@@ -247,6 +268,7 @@ class UpdateCadastro extends Component {
         
 
           </div>
+          <ToastContainer /> 
           </div>
     )
 }

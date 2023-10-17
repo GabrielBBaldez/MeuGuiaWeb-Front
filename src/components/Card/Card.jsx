@@ -4,14 +4,32 @@ import RoteiroService from '../../services/RoteiroService'
 import { useNavigate  } from 'react-router-dom';
 import { useState } from 'react';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 function deleteRoteiro(identificador){
     RoteiroService.deleteRoteiro(identificador).then(res => {
-        window.location.reload()
+
+        toast.success('Card excluído com sucesso!', {
+            position: 'top-right',
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+          });
+
+          setTimeout(() => {
+            window.location.reload();
+          }, 3000);
+
     });
 }
 
 // eslint-disable-next-line react/prop-types
 function Card({name, description, html_url, identificador}){
+
+    const notify = () => toast("Wow so easy!");
 
     const [viagemLotada, setViagemLotada] = useState(false);
 
@@ -55,7 +73,9 @@ function Card({name, description, html_url, identificador}){
                 </button>  
 
                 <button className={styles.botao} onClick={() => handleRedirecionar(identificador)}><BsArrowRight/></button>
-            </div>      
+            </div>   
+
+            <ToastContainer />   
         </section>
     )
 }
