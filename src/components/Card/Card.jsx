@@ -3,6 +3,8 @@ import {BsArrowRight} from 'react-icons/bs'
 import RoteiroService from '../../services/RoteiroService'
 import { useNavigate  } from 'react-router-dom';
 import { useState } from 'react';
+import axios from 'axios';
+import { useEffect } from 'react';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -29,15 +31,52 @@ function deleteRoteiro(identificador){
 // eslint-disable-next-line react/prop-types
 function Card({name, description, html_url, identificador}){
 
+
     const notify = () => toast("Wow so easy!");
 
-    const [viagemLotada, setViagemLotada] = useState(false);
 
-    const handleBotaoClick = () => {
-        // Se a mensagem estiver visível, esconda-a; caso contrário, mostre-a
-        setViagemLotada(!viagemLotada);
-      };
-    
+
+    const [repositories, setRepositories] = useState([])
+
+    useEffect(()=>{
+        const buscarRepositorios = async() => {
+            const response = await fetch(`http://localhost:8080/roteiro/${identificador}`)
+
+            const data = await response.json()
+            setRepositories(data)
+        }
+        buscarRepositorios()
+    }, [])
+
+    const [viagemLotada, setViagemLotada] = useState();
+
+    const handleBotaoClick = async (e) => {
+
+        let lotado = repositories.lotado;
+        console.log(lotado);
+
+        if(lotado === true){
+            lotado = false;
+        }
+        else{
+            lotado=true;
+        }
+
+    const headers = {
+    'Content-Type': 'application/json',
+  };
+
+    axios
+      .put(`http://localhost:8080/roteiro/${lotado}/${identificador}`, { headers })
+      .then((response) => {
+        console.log('PUT request bem-sucedido:', response);
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.error('Erro ao enviar o PUT request:', error);
+      });
+    }
+
     const navigate  = useNavigate();
 
     const handleRedirecionar = (identificador) => {
@@ -52,13 +91,16 @@ function Card({name, description, html_url, identificador}){
 
     return(
         <section className={styles.card}>
-
+                
                 <img  className={styles.imagemViagem} src={html_url} alt="imagem-roteiro"></img>
-                {viagemLotada ? (
+                {repositories.lotado ? (
                     <div className={styles.lotado}>
                     <p style={{color:'white', marginBottom:'0px'}}>LOTADO</p>
                     </div>
-                ) : null}
+                ) : 
+                    null
+                }
+                
 
             <h3>{name}</h3>
           
@@ -69,7 +111,7 @@ function Card({name, description, html_url, identificador}){
                 <button className='btn btn-secondary' onClick={() => handleEdicao(identificador)} style={{marginRight:'10px'}}><i className="fa-solid fa-pen-to-square"></i></button>
                 <button className='btn btn-danger' id="excluirButton" data-id={identificador} onClick={() => deleteRoteiro(identificador)}><i className="fa-solid fa-trash"></i></button>
                 <button className="btn btn-dark" style={{marginRight:'10px', marginLeft:'10px'}} onClick={handleBotaoClick}>
-                    {viagemLotada ? 'Cancelar Lotação' : 'Lotar viagem'}
+                    {repositories.lotado ? 'Cancelar Lotação' : 'Lotar viagem'}
                 </button>  
 
                 <button className={styles.botao} onClick={() => handleRedirecionar(identificador)}><BsArrowRight/></button>

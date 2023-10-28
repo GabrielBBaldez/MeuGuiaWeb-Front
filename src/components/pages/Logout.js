@@ -7,11 +7,7 @@ import Button from "../Login/Button/button";
 function Logout () {
         const {signout} = useAuth();
         const navigate = useNavigate();
-        if (signout) {
-        }
-        navigate("/")
-    }
+        
+        signout();
+}
 export default Logout;
-/*
-
- */

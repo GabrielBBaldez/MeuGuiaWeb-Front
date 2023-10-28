@@ -20,14 +20,19 @@ function Login () {
                 setError("Preencha todos os campos");
                 return;
             }
-            signin(email, senha)
-            navigate("/");
-        };
+            
+            try{
+            signin(email, senha);
+          }
+          catch{
+            setError("Preencha todos os campos");
+          }
+
+          };
         return (
             <div className={styles.container}>
                 <div className='border'  style={{boxShadow:'0px 4px 6px rgba(0, 0, 0, 0.1)'}}>
                 <h1 className={styles.texto}>Login</h1>
-                <content>
                         <div className={styles.login}>
                             <Input
                                 type="email"
@@ -45,13 +50,11 @@ function Login () {
                             />
                         </div>
                         <div className={styles.erro}>
-                            <labelError>{error}</labelError>
+                            <label>{error}</label>
                         </div>
                         <div className={styles.botao}>
                             <Button Text="Entrar" onClick={handleLogin}/>
-                        </div>
-                </content>
-                
+                        </div>              
                 </div>
             </div>
             

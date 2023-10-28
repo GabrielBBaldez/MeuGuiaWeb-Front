@@ -33,19 +33,27 @@ export const AuthProvider = ({ children }) => {
         };
         console.log(usuario)
         axios
-            .post('http://localhost:8080/login', usuario, {headers})
+            .post('http://localhost:8080/usuario', usuario, {headers})
             .then((response) => {
                 console.log('POST request bem-sucedido:', response);
                 localStorage.setItem("user_token", JSON.stringify({ email, token }));
+                window.location.href = '/';
             })
             .catch((error) => {
-                console.error('Erro ao enviar o POST request:', error);
-            });
+                console.error('Erro ao enviar o POST request:', error);    
+
+                if(error.response["status"] === 404){
+
+                }   
+            })
+
+
     };
 
     const signout = () => {
         setUser(null);
         localStorage.removeItem("user_token");
+        window.location.href = '/';
     };
 
     return (
