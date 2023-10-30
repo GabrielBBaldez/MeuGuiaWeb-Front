@@ -2,7 +2,6 @@ import CardUsuario from '../Card/CardUsuario';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
-
 import styles from '../module/Roteiro.module.css';
 
 function RoteiroUsuario() {

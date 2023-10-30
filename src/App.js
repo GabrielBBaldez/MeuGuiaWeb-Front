@@ -1,5 +1,6 @@
 import './App.css';
 import Header from './components/Default/Header';
+import Footer from './components/Default/Footer';
 import HeaderUsuario from './components/Default/HeaderUsuario';
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
@@ -45,6 +46,7 @@ function App() {
                   <Route path="/roteiros/:id/participar" element= {< ParticiparViagem />}/>
             </Routes>
 
+          <Footer></Footer>
     </Router>
 
     </div>

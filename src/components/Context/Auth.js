@@ -1,6 +1,8 @@
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import useAuth from "../hooks/useAuth";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const AuthContext = createContext({});
 
@@ -42,9 +44,13 @@ export const AuthProvider = ({ children }) => {
             .catch((error) => {
                 console.error('Erro ao enviar o POST request:', error);    
 
-                if(error.response["status"] === 404){
-
-                }   
+                toast.error('Ocorreu um erro ao tentar fazer o login!', {
+                    position: 'top-right', // Posição da notificação
+                    autoClose: 3000,      // Duração em milissegundos
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                  });
             })
 
 
@@ -61,6 +67,8 @@ export const AuthProvider = ({ children }) => {
             value={{ user, signed: !!user, signin, signout }}
         >
             {children}
+        <ToastContainer /> 
         </AuthContext.Provider>
+        
     );
 };
