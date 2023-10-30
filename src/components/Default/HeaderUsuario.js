@@ -15,19 +15,16 @@ function Header(){
                         <Link to="/roteiros">Roteiros</Link>
                         </li>
                         <li className={styles.item}>
-                        <Link to="/cadastro">Cadastro</Link>
-                        </li>
-                        <li className={styles.item}>
                         <Dropdown data-bs-theme="dark" >
                             <Dropdown.Toggle className={styles.botaoUsuario} id="dropdown-button-dark" variant="dark" style={{ background: 'transparent', border: 'none', fontSize:'25px'}}>
                                 Usuário
                             </Dropdown.Toggle>
                             <Dropdown.Menu style={{backgroundColor: "#333"}} >
-                                <Dropdown.Item className={styles.link}>
+                                <Dropdown.Item href="/login" className={styles.link}>
                                     <Link to="/login" style={{color:"white"}}>Login</Link>
                                 </Dropdown.Item>
                                 <Dropdown.Divider />
-                                <Dropdown.Item className={styles.link}>
+                                <Dropdown.Item href="/logout" className={styles.link}>
                                     <Link to="/logout" style={{color:"white"}}>Logout</Link>
                                 </Dropdown.Item>
                             </Dropdown.Menu>

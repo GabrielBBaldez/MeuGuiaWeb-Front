@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { useState } from 'react';
-import { useEffect, useRef  } from 'react';
+import { useEffect} from 'react';
 import styles from '../module/ParticiparViagem.module.css';
 
 import { ToastContainer, toast } from 'react-toastify';
@@ -203,7 +203,7 @@ function ParticiparViagem(){
                 </div>
 
                 <div className={styles.submit}>
-                    <button type="submit" className="btn btn-success"><i className="fa-solid fa-check"></i> Enviar para API</button>
+                    <button type="submit" className="btn btn-success"><i className="fa-solid fa-check"></i> Enviar</button>
                 </div>
             </form>
 

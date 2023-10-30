@@ -1,8 +1,8 @@
 import styles from '../module/Card.module.css'
 import {BsArrowRight} from 'react-icons/bs'
-import RoteiroService from '../../services/RoteiroService'
 import { useNavigate  } from 'react-router-dom';
 import { useState } from 'react';
+import { useEffect } from 'react';
 
 
 
@@ -15,11 +15,30 @@ function CardUsuario({name, description, html_url, identificador}){
         navigate(`/roteiros/${identificador}`);
     };
 
+    const [repositories, setRepositories] = useState([])
+
+    useEffect(()=>{
+        const buscarRepositorios = async() => {
+            const response = await fetch(`http://localhost:8080/roteiro/${identificador}`)
+
+            const data = await response.json()
+            setRepositories(data)
+        }
+        buscarRepositorios()
+    }, [])
+
 
     return(
         <section className={styles.card}>
 
-            <img  className={styles.imagemViagem} src={html_url} alt="imagem-roteiro"></img>              
+            <img  className={styles.imagemViagem} src={html_url} alt="imagem-roteiro"></img>
+            {repositories.lotado ? (
+                    <div className={styles.lotado}>
+                    <p style={{color:'white', marginBottom:'0px'}}>LOTADO</p>
+                    </div>
+                ) : 
+                    null
+                }           
 
             <h3>{name}</h3>
           

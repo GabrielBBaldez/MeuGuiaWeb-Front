@@ -1,0 +1,9 @@
+{
+    "name": "Meu Aplicativo PWA",
+    "short_name": "Meu App",
+    "description": "Uma descrição do meu aplicativo",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#007bff"
+  }

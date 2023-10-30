@@ -74,7 +74,7 @@ function ViewRoteiro() {
                         <img src={repositories.urlImagem} alt='imagemRoteiro'></img>
                     </div>
                     <div className='col-12'>
-                        <button className='btn btn-secondary' onClick={() => handleEdicao()} style={{marginTop:'10px'}}><i class="fa-solid fa-plane-departure"></i> Quero ir nesta viagem!</button>
+                        <button className='btn btn-secondary' onClick={() => handleEdicao()} style={{marginTop:'10px'}}><i className="fa-solid fa-plane-departure"></i> Quero ir nesta viagem!</button>
                     </div>
                     <div className='col-12'>
                         <h3 className={styles.atracoes}>{repositories.atracoes}</h3>
@@ -91,8 +91,8 @@ function ViewRoteiro() {
 
                             {repositories && repositories.programacaoList ? (
                             repositories.programacaoList.map(item => (
-                                <div className='border' style={{padding:'10px',  marginBottom:'10px', wordWrap:'break-word', boxShadow:'0px 4px 6px rgba(0, 0, 0, 0.1)'}}>
-                                    <h5 key={item.id}><b>Dia {item.sequencialDia} - {item.localDia}</b> </h5>
+                                <div key={item.id} className='border' style={{padding:'10px',  marginBottom:'10px', wordWrap:'break-word', boxShadow:'0px 4px 6px rgba(0, 0, 0, 0.1)'}}>
+                                    <h5><b>Dia {item.sequencialDia} - {item.localDia}</b> </h5>
                                     <p className={styles.atividade}>{item.atividade}</p> 
                                 </div>
                             ))
