@@ -9,9 +9,6 @@ function Header(){
             <div className={styles.destinos}>
                     <ul className={styles.list}>
                         <li className={styles.item}>
-                            <Link to="/">Home</Link>
-                        </li>
-                        <li className={styles.item}>
                         <Link to="/roteiros">Roteiros</Link>
                         </li>
                         <li className={styles.item}>
@@ -20,12 +17,12 @@ function Header(){
                                 Usuário
                             </Dropdown.Toggle>
                             <Dropdown.Menu style={{backgroundColor: "#333"}} >
-                                <Dropdown.Item href="/login" className={styles.link}>
-                                    <Link to="/login" style={{color:"white"}}>Login</Link>
+                                <Dropdown.Item className={styles.link} href="/login" style={{color:"white"}}>
+                                    Login
                                 </Dropdown.Item>
                                 <Dropdown.Divider />
-                                <Dropdown.Item href="/logout" className={styles.link}>
-                                    <Link to="/logout" style={{color:"white"}}>Logout</Link>
+                                <Dropdown.Item className={styles.link} href="/logout" style={{color:"white"}}>
+                                    Logout
                                 </Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>

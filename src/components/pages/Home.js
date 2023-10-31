@@ -47,7 +47,7 @@ function Home() {
     }, [])
 
         return (
-            <div className='container'>
+            <div className="container">
                 <Swiper slidesPerView={slidePerView} pagination={{clickable:true}} navigation>
                     {repositories.map((item) =>(
                         <SwiperSlide key={item.id}>
@@ -61,8 +61,7 @@ function Home() {
                         </SwiperSlide>
 
                     ))}
-                </Swiper>
-                
+                </Swiper>        
             </div>
         );
 

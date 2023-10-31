@@ -1,6 +1,5 @@
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
-import useAuth from "../hooks/useAuth";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -39,7 +38,7 @@ export const AuthProvider = ({ children }) => {
             .then((response) => {
                 console.log('POST request bem-sucedido:', response);
                 localStorage.setItem("user_token", JSON.stringify({ email, token }));
-                window.location.href = '/';
+                window.location.href = '/roteiros';
             })
             .catch((error) => {
                 console.error('Erro ao enviar o POST request:', error);    
@@ -59,7 +58,7 @@ export const AuthProvider = ({ children }) => {
     const signout = () => {
         setUser(null);
         localStorage.removeItem("user_token");
-        window.location.href = '/';
+        window.location.href = '/roteiros';
     };
 
     return (

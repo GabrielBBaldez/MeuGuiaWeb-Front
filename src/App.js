@@ -1,6 +1,5 @@
 import './App.css';
 import Header from './components/Default/Header';
-import Footer from './components/Default/Footer';
 import HeaderUsuario from './components/Default/HeaderUsuario';
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
@@ -35,8 +34,7 @@ function App() {
       ) : (
         <HeaderUsuario/>
       )}
-            <Routes>
-                  <Route exact path="/" element= {< Home />}/>
+            <Routes>                 
                   <Route path="/roteiros" element={admin ? (<Roteiro />) : (<RoteiroUsuario />)}/>
                   <Route path="/cadastro" element={admin ? (<CadastraRoteiro />) : (<PessoalAutorizado/>)}/>
                   <Route path="/login" element= {< Login />}/>
@@ -44,9 +42,8 @@ function App() {
                   <Route path="/cadastro/:id" element={admin ? (<UpdateCadastro />) : (<PessoalAutorizado/>)}/>
                   <Route path="/roteiros/:id" element= {< ViewRoteiro />}/>
                   <Route path="/roteiros/:id/participar" element= {< ParticiparViagem />}/>
-            </Routes>
-
-          <Footer></Footer>
+            </Routes>           
+          
     </Router>
 
     </div>
