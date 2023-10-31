@@ -13,6 +13,7 @@ import ViewRoteiro from './components/pages/ViewRoteiro';
 import UpdateCadastro from './components/pages/UpdateCadastro';
 import ParticiparViagem from './components/pages/ParticiparViagem';
 import PessoalAutorizado from './components/pagesUsuario/PessoalAutorizado';
+import Footer from './components/Default/Footer';
 
 function App() {
 
@@ -44,6 +45,7 @@ function App() {
                   <Route path="/roteiros/:id/participar" element= {< ParticiparViagem />}/>
             </Routes>           
           
+          <Footer></Footer>
     </Router>
 
     </div>

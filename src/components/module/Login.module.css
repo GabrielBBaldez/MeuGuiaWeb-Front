@@ -6,7 +6,7 @@
     display: flex;
     justify-content: center; /* Centraliza horizontalmente */
     align-items: center; /* Centraliza verticalmente */
-    height: 60vh; /* Altura da tela inteira */
+    height: 79.1vh; /* Altura da tela inteira */
 }
 
 .login{
@@ -18,7 +18,7 @@
 }
 
 .senha{
-    padding-bottom: 30px;
+    padding-bottom: 15px;
     display: flex;
     justify-content: center;
 }

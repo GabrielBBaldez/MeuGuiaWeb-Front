@@ -9,6 +9,7 @@
     width: 600px;
     margin: 0 auto;
     padding-top: 30px;
+    height: 79.1vh; /* Altura da tela inteira */
 }
 
 .submit{

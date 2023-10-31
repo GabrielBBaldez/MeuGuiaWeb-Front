@@ -61,7 +61,7 @@ function Home() {
                         </SwiperSlide>
 
                     ))}
-                </Swiper>        
+                </Swiper>                       
             </div>
         );
 
