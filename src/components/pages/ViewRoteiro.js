@@ -73,9 +73,17 @@ function ViewRoteiro() {
                     <div className='col-12' style={{display:'flex', justifyContent:'center'}}>
                         <img src={repositories.urlImagem} alt='imagemRoteiro'></img>
                     </div>
-                    <div className='col-12'>
-                        <button className='btn btn-secondary' onClick={() => handleEdicao()} style={{marginTop:'10px'}}><i className="fa-solid fa-plane-departure"></i> Quero ir nesta viagem!</button>
-                    </div>
+
+                    {repositories.lotado ? (
+                            <div className='col-12'>
+                                <button className="btn btn-warning" onClick={() => handleEdicao()} style={{marginTop:'10px'}}><i className="fa-solid fa-plane-departure"></i> Lista de espera!</button>
+                            </div>                           
+                            ) : (
+                                <div className='col-12'>
+                                    <button className='btn btn-secondary' onClick={() => handleEdicao()} style={{marginTop:'10px'}}><i className="fa-solid fa-plane-departure"></i> Quero ir nesta viagem!</button>
+                                </div>
+                            )}
+             
                     <div className='col-12'>
                         <h3 className={styles.atracoes}>{repositories.atracoes}</h3>
                     </div>
